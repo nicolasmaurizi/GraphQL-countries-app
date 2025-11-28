@@ -122,7 +122,12 @@ function App() {
 											onClick={() => setSelectedCountry(country)}
 										>
 											<div className="flex items-center justify-between">
-												<span className="text-3xl">{country.emoji}</span>
+												<img
+													src={`https://flagcdn.com/w40/${country.code.toLowerCase()}.png`}
+													alt={country.name}
+													className="w-8 h-6 rounded shadow-sm object-cover"
+												/>
+
 												<button
 													className="text-lg"
 													onClick={(e) => {

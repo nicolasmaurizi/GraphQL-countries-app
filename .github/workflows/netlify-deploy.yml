@@ -2,7 +2,7 @@ name: Deploy to Netlify
 
 on:
   push:
-    branches: ["master"] 
+    branches: ["master"]  # o ["main", "master"] si querés ambas
 
 jobs:
   build_and_deploy:
@@ -10,7 +10,7 @@ jobs:
 
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -26,7 +26,7 @@ jobs:
       - name: Deploy to Netlify
         uses: netlify/actions/cli@v4
         with:
-          args: deploy --prod --dir=$NETLIFY_BUILD_DIR
+          args: deploy --prod --dir=dist
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
